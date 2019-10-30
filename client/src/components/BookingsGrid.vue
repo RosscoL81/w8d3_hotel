@@ -2,9 +2,9 @@
   <div id="bookingsGrid">
     <div class="booking" v-for="booking in bookings">
       <h2>{{booking.name}}</h2>
-      <p>{{booking.email}}</p>
-      <p v-if= "booking.check_in === true">Checked in</p>
-      <p v-else>Not checked in</p>
+      <p>email: {{booking.email}}</p>
+      <p v-if= "booking.check_in === true">Status: Checked in</p>
+      <p v-else>Status: Not checked in</p>
       <button v-on:click="handleDelete(booking._id)">Delete Booking</button>
     </div>
   </div>
