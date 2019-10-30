@@ -27,6 +27,13 @@ export default {
 
     eventBus.$on('booking-added', booking => this.bookings.push(booking));
 
+    eventBus.$on('check-in', id => {
+      const index = this.bookings.findIndex(booking => booking._id === id);
+      this.bookings[index].check_in = true;
+      console.log("INDEX", index);
+      // console.log("BOOKINGS", this.bookings);
+    })
+
     eventBus.$on('booking-deleted', id => {
       const index = this.bookings.findIndex(booking => booking._id === id);
       this.bookings.splice(index, 1);

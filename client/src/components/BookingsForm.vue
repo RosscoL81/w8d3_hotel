@@ -27,7 +27,7 @@ export default {
     return {
       name: "",
       email: "",
-      check_in: null
+      check_in: false
     }
   },
   methods: {
@@ -44,6 +44,9 @@ export default {
       .then(booking => {
         eventBus.$emit('booking-added', booking);
       });
+
+      this.name = ""
+      this.email = ""
     }
   }
 }

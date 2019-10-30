@@ -6,6 +6,7 @@
       <p v-if= "booking.check_in === true">Status: Checked in</p>
       <p v-else>Status: Not checked in</p>
       <button v-on:click="handleDelete(booking._id)">Delete Booking</button>
+      <button v-if="booking.check_in !== true" v-on:click="handleUpdate(booking)">Check In</button>
     </div>
   </div>
 </template>
@@ -21,6 +22,12 @@ export default {
     handleDelete(id){
       BookingService.deleteBooking(id)
       .then(response => eventBus.$emit('booking-deleted', id));
+    },
+
+    handleUpdate(booking){
+      console.log(booking);
+      BookingService.updateBooking(booking)
+      .then(response => eventBus.$emit('check-in', booking._id))
     }
   }
 }
